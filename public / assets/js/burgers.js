@@ -14,24 +14,25 @@ $(function() {
       // Send the PUT request.
       $.ajax("/api/burgers/" + id, {
         type: "PUT",
-        data: newBurger
+        data: devouredState
       }).then(
         function() {
-          console.log("added new burger");
+          console.log("burger devoured");
           // Reload the page to get the updated list
           location.reload();
         }
       );
     });
   
-    $(".create-form").on("submit", function(event) {
+    $(".eatburger").on("click", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
   
-      var newCat = {
-        name: $("#ca").val().trim(),
-        sleepy: $("[name=sleepy]:checked").val().trim()
+      var id = $(this).data("id");
+      var devouredState = {
+        devoured: 1
       };
+    });
   
       // Send the POST request.
       $.ajax("/api/cats", {
@@ -44,21 +45,20 @@ $(function() {
           location.reload();
         }
       );
-    });
+    
   
-    $(".delete-cat").on("click", function(event) {
+    $(".trashburger").on("click", function(event) {
+      event.preventDefault();
+
       var id = $(this).data("id");
   
       // Send the DELETE request.
-      $.ajax("/api/cats/" + id, {
+      $.ajax({
         type: "DELETE"
-      }).then(
-        function() {
-          console.log("deleted cat", id);
-          // Reload the page to get the updated list
-          location.reload();
-        }
-      );
+        url: "/api/burgers/" + id
+      }).then(location.reload());
+        
+      
     });
-  });
+});
   
