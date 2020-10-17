@@ -1,8 +1,11 @@
 var express = require("express");
-var burger = require("../models/burger");
+
+// Import the model to use its database functions.
+var burger = require("../models/burger.js");
 
 var router = express.Router();
 
+// Create all routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
   burger.selectAll(function(data) {
     var hdbrsObj = {

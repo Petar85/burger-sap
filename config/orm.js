@@ -1,3 +1,4 @@
+// Import MySQL connection.
 var connection = require("../config/connection");
 
 function createQmarks(num) {
@@ -8,10 +9,14 @@ function createQmarks(num) {
   return arr.toString();
 }
 
+// Helper function to convert object key/value pairs to SQL syntax
 function translateSql(ob) {
   var arr = [];
+
+  // Loop through the keys and push the key/value as a string into arr
   for (var key in ob) {
     var value = ob[key];
+    // Check to skip hidden properties
     if (Object.hasOwnProperty.call(ob, key)) {
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
@@ -22,6 +27,7 @@ function translateSql(ob) {
   return arr.toString();
 }
 
+// Object for all SQL statement functions
 var orm = {
   selectAll: function(table, cb) {
     var dbQuery = "SELECT * FROM " + table + ";";
@@ -82,4 +88,6 @@ var orm = {
     });
   }
 };
+
+// Export the ORM object for the model 
 module.exports = orm;

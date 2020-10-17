@@ -1,3 +1,4 @@
+// Set up MySQL connection.
 const mysql = require("mysql");
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
@@ -11,4 +12,5 @@ if (process.env.JAWSDB_URL) {
   });
 }
 connection.connect();
+// Export connection for ORM to use.
 module.exports = connection;

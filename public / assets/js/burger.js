@@ -8,12 +8,14 @@ $(function() {
           .trim(),
         devoured: 0
       };
-  
+
+      // Send the put request.
       $.ajax("/api/burgers", {
         type: "POST",
         data: newBurger
       }).then(function() {
         console.log("Added new burger");
+        // Reload the page to get the updated list.
         location.reload();
       });
     });
@@ -25,7 +27,8 @@ $(function() {
       var devouredState = {
         devoured: 1
       };
-  
+
+      // Send the POST request.
       $.ajax("/api/burgers/" + id, {
         type: "PUT",
         data: devouredState
