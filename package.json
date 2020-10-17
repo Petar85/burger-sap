@@ -2,7 +2,7 @@
   "name": "burger-sap",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,13 +11,14 @@
     "url": "git+https://github.com/Petar85/burger-sap.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Petar Zivkovic",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Petar85/burger-sap/issues"
   },
   "homepage": "https://github.com/Petar85/burger-sap#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
     "mysql": "^2.18.1"
